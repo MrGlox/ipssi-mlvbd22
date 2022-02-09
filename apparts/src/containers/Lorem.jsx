@@ -1,43 +1,37 @@
-import { Component } from "react";
+import { useEffect, useState } from "react";
 
-class Lorem extends Component {
-  state = {
-    isLoading: true,
-    hasError: false,
-    data: [],
-  };
+const Lorem = () => {
+  const [isLoading, setLoading] = useState(true);
+  const [hasError, setError] = useState(false);
+  const [data, setData] = useState([]);
 
-  async fetchApi() {
+  const fetchApi = async () => {
     try {
       const response = await fetch(
         "https://baconipsum.com/api/?type=meat-and-filler"
       );
       const data = await response.json();
 
-      this.setState({ isLoading: false, data }); // === {data: data}
+      setData(data);
+      setLoading(false);
     } catch (err) {
-      this.setState({ hasError: true });
-
+      setError(true);
       throw err;
     }
-  }
+  };
 
-  componentDidMount() {
-    this.fetchApi();
-  }
+  useEffect(() => {
+    fetchApi();
+  }, []);
 
-  render() {
-    const { isLoading, hasError, data } = this.state;
+  if (hasError) return <p>Error...</p>; // CONDITION DE SORTIE
 
-    if (hasError) return <p>Error...</p>; // CONDITION DE SORTIE
-
-    return (
-      <>
-        <h1>Lorem</h1>
-        {isLoading ? <p>Loading...</p> : <p>{data}</p>}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <h1>Lorem</h1>
+      {isLoading ? <p>Loading...</p> : <p>{data}</p>}
+    </>
+  );
+};
 
 export default Lorem;

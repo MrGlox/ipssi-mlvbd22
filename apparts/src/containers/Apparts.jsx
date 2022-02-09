@@ -1,36 +1,32 @@
-import { Component } from "react";
+import { useState } from "react";
 
 // import { Button } from "./components/atoms"; // relatif
 import { List, Form } from "components/molecules"; // absolut
 
 import data from "data.json";
 
-class App extends Component {
-  state = {
-    filteredData: data,
-    value: "test",
-  };
+const Apparts = () => {
+  const [value, setValue] = useState("test"); // Array(getter, setter)
+  const [filteredData, setFilteredData] = useState(data); // Array(getter, setter)
 
-  handleChange = ({ target: { value } }) => {
-    this.setState({
-      value,
-      filteredData: data.filter((appart) =>
+  const handleChange = ({ target: { value } }) => {
+    setValue(value);
+    setFilteredData(
+      data.filter((appart) =>
         appart.title.toLowerCase().includes(value.toLowerCase())
-      ),
-    });
+      )
+    );
   };
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Apparts</h1>
-          <Form value={this.state.value} handleChange={this.handleChange} />
-          <List data={this.state.filteredData} />
-        </header>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Apparts</h1>
+        <Form value={value} handleChange={handleChange} />
+        <List data={filteredData} />
+      </header>
+    </div>
+  );
+};
 
-export default App;
+export default Apparts;

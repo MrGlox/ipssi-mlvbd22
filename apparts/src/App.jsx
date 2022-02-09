@@ -6,6 +6,7 @@ import "styles/App.css";
 import { Link } from "components/atoms";
 
 import Apparts from "containers/Apparts";
+import Appart from "containers/Appart";
 import Clock from "containers/Clock";
 import Home from "containers/Home";
 import Lorem from "containers/Lorem";
@@ -35,7 +36,9 @@ class App extends Component {
         <main className="App-main">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="apparts" element={<Apparts />} />
+            <Route path="apparts" element={<Apparts />}>
+              <Route path=":id" element={<Appart />} />
+            </Route>
             <Route path="clock" element={<Clock label="Il est : " />} />
             <Route path="lorem" element={<Lorem />} />
           </Routes>
