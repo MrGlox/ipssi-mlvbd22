@@ -9,7 +9,7 @@ const List = ({ data = [] }) => {
     <ul>
       {Array.isArray(data) &&
         data.map((element, index) => (
-          <Item key={"apparts" + index} {...element}>
+          <Item key={"apparts" + element.id} {...element}>
             {element.description}
           </Item>
         ))}

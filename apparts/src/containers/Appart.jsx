@@ -1,7 +1,22 @@
+import { useParams } from "react-router-dom";
+
+import { slugify } from "utils";
+
 import data from "data.json";
 
-const Home = () => {
-  return <h1>Hello world</h1>;
+const Appart = () => {
+  const { slug } = useParams();
+  const { title, description } = data.find(
+    (element) => slugify(element.title) === slug
+  );
+
+  return (
+    <>
+      <h1>Appart details</h1>
+      <h2>{title}</h2>
+      <p>{description}</p>
+    </>
+  );
 };
 
-export default Home;
+export default Appart;

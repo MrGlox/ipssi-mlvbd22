@@ -36,11 +36,11 @@ class App extends Component {
         <main className="App-main">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="apparts" element={<Apparts />}>
-              <Route path=":id" element={<Appart />} />
-            </Route>
+            <Route path="apparts" element={<Apparts />} />
+            <Route path="apparts/:slug" element={<Appart />} />
             <Route path="clock" element={<Clock label="Il est : " />} />
             <Route path="lorem" element={<Lorem />} />
+            <Route path="*" element={<p>There's nothing here! (404)</p>} />
           </Routes>
         </main>
       </div>
