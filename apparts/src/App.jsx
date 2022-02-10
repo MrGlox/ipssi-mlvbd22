@@ -10,6 +10,7 @@ import Appart from "containers/Appart";
 import Clock from "containers/Clock";
 import Home from "containers/Home";
 import Lorem from "containers/Lorem";
+import Todo from "containers/Todo";
 
 class App extends Component {
   render() {
@@ -30,6 +31,9 @@ class App extends Component {
               <li>
                 <Link to="/lorem">Lorem</Link>
               </li>
+              <li>
+                <Link to="/todo">Todo</Link>
+              </li>
             </ul>
           </nav>
         </header>
@@ -40,6 +44,7 @@ class App extends Component {
             <Route path="apparts/:slug" element={<Appart />} />
             <Route path="clock" element={<Clock label="Il est : " />} />
             <Route path="lorem" element={<Lorem />} />
+            <Route path="todo" element={<Todo />} />
             <Route path="*" element={<p>There's nothing here! (404)</p>} />
           </Routes>
         </main>
