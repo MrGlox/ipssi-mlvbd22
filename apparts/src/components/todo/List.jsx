@@ -1,9 +1,13 @@
 import Item from "./Item";
 
-const List = ({ items = [] }) => (
+const List = ({ items = [], handleClick }) => (
   <ul>
     {items.map((item, index) => (
-      <Item key={"todoItem" + index} status={item.status}>
+      <Item
+        handleClick={(ev) => handleClick(ev, index)}
+        key={"todoItem" + index}
+        status={item.status}
+      >
         {item.content}
       </Item>
     ))}

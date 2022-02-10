@@ -1,5 +1,6 @@
-const Item = ({ children, status = false }) => (
+const Item = ({ children, status = false, handleClick }) => (
   <li
+    onClick={handleClick}
     style={
       !status ? { textDecoration: "none" } : { textDecoration: "line-through" }
     }
