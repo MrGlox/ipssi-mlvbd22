@@ -3,12 +3,9 @@ import { useState } from "react";
 import { TodoList, TodoForm } from "components/todo";
 
 const Todo = () => {
-  //   const [value, setValue] = useState("");
-  const [data, setData] = useState([
-    { content: "Acheter du pain", status: false },
-    { content: "Acheter du beurre", status: false },
-    { content: "Acheter de la confiture", status: false },
-  ]);
+  const [data, setData] = useState(
+    JSON.parse(localStorage.getItem("data")) || []
+  );
 
   const handleSubmit = (ev) => {
     ev.preventDefault(); // évite l'envoi du formulaire
@@ -37,6 +34,8 @@ const Todo = () => {
       return [...prev]; // envoi au setData du nouveau tableau reconstitué
     });
   };
+
+  localStorage.setItem("data", JSON.stringify(data));
 
   return (
     <>

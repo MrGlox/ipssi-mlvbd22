@@ -1,22 +1,17 @@
-import { useState } from "react";
+import { useContext, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 // import { Button } from "./components/atoms"; // relatif
+import MainContext from "contexts/Main"; // absolut
 import { List, Form } from "components/molecules"; // absolut
 
-import data from "data.json";
-
 const Apparts = () => {
-  const [value, setValue] = useState("test"); // Array(getter, setter)
-  const [filteredData, setFilteredData] = useState(data); // Array(getter, setter)
+  const searchParams = useSearchParams();
+  const { value, filteredData, handleChange } = useContext(MainContext);
 
-  const handleChange = ({ target: { value } }) => {
-    setValue(value);
-    setFilteredData(
-      data.filter((appart) =>
-        appart.title.toLowerCase().includes(value.toLowerCase())
-      )
-    );
-  };
+  useEffect(() => {
+    searchParams[1](value.length === 0 ? "" : { filter: value });
+  }, []);
 
   return (
     <div className="App">

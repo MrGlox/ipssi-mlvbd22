@@ -6,10 +6,13 @@ import reportWebVitals from "./reportWebVitals";
 
 import "./index.css";
 import App from "./App";
+import { Provider as MainProvider } from "contexts/Main";
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <MainProvider>
+      <App />
+    </MainProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );
