@@ -35,6 +35,7 @@ const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => (
         </svg>
         <h1>Acme</h1>
       </div>
+      <Button as="button">Label</Button>
       <div>
         {user ? (
           <Button size="small" onClick={onLogout}>

@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { color } from "styled-system";
 
-export default styled.button`
+export default styled.a`
   font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   border: 0;
